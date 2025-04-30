@@ -30,6 +30,16 @@ router.get("/find-name-animals/:nombre", (req, res) => {
     .catch((error) => res.json({ message: error.message }));
 });
 
+//Consultar todos los animales
+router.get("/find-all-animals", (req, res) => {
+  try {
+    const animals = animalSchema.find();
+    res.json(animals);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
 //Modificar un animal por id
 router.put("/update-animals/:id", (req, res) => {
   const { id } = req.params;
