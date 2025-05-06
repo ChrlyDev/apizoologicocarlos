@@ -31,12 +31,12 @@ router.get("/find-name-animals/:nombre", (req, res) => {
 });
 
 //Consultar todos los animales
-router.get("/find-all-animals", (req, res) => {
+router.get("/find-all-animals", async (req, res) => {
   try {
-    const animals = animalSchema.find();
+    const animals = await animalSchema.find();
     res.json(animals);
   } catch (error) {
-    res.json({ message: error.message });
+    res.json({ message: error });
   }
 });
 
